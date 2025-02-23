@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseView Capture</title>
+  <!-- Include Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Include QRCode.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold mb-4 text-center">Admin Panel</h1>
+  <div class="flex flex-col md:flex-row gap-6">
+    <!-- Left column: QR code and phone list -->
+    <div class="md:w-1/2 space-y-4">
+      <!-- QR Code Container -->
+      <div id="qrcode" class="mx-auto"></div>
+      <!-- Phone List -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Available Phone Streams</h2>
+        <ul id="phoneList" class="space-y-2"></ul>
+      </div>
+    </div>
+    <!-- Right column: Video display -->
+    <div class="md:w-1/2 flex justify-center items-center">
+      <!-- The video will fill its container and maintain a square aspect ratio -->
+      <video id="remoteVideo" autoplay playsinline controls 
+             class="w-full aspect-square border border-gray-300 rounded object-cover"></video>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/simple-peer@latest/simplepeer.min.js"></script>
+  <script src="admin.js"></script>
+  <script>
+    // Generate the QR code dynamically based on the current location
+    const qrContainer = document.getElementById('qrcode');
+    const phoneURL = `${location.protocol}//${location.hostname}:${location.port}/phone.html`;
+    new QRCode(qrContainer, {
+      text: phoneURL,
+      width: 150,
+      height: 150,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DO SOMETHING COOL</title>
+  <!-- Include Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="bg-gray-100 flex flex-col items-center p-6">
+  <h1 class="text-2xl font-bold mb-4">Phone Streaming</h1>
+  <!-- The video element is styled to be square -->
+  <video id="preview" autoplay muted playsinline 
+         class="w-full max-w-lg border border-gray-300 rounded aspect-square object-cover"></video>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/simple-peer@latest/simplepeer.min.js"></script>
+  <script src="phone.js"></script>
+</body>
+</html>
